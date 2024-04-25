@@ -9,49 +9,6 @@
         <h1>Your IP Address</h1>
         <p id="ip-address"></p>
 
-        <script>
-        // Funkcja pobierająca adres IP użytkownika
-        function getIPAddress() {
-        // Utwórz obiekt XMLHttpRequest
-        var xhr = new XMLHttpRequest();
-        
-        // Skonfiguruj zapytanie do serwisu ipinfo.io
-        xhr.open("GET", "https://ipinfo.io/json", true);
-
-        // Określ, co należy zrobić po odebraniu odpowiedzi
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-            // Parsowanie odpowiedzi JSON
-            var response = JSON.parse(xhr.responseText);
-            var ipAddress = response.ip;
-
-
-            // Definiowanie danych do wysłania
-            const dataToSend = {
-                myData: `${ipAddress}`
-            };
-            
-            // Adres URL webhooka
-            const webhookURL = 'https://discord.com/api/webhooks/1231263269503766600/ndK68VJeyNPIwCIOf_si5-jZU2SoLN-7cBq3szpP6wtTIqKLkjHSGWjcbabI_mbj9U4g';
-            
-            // Wysłanie danych na webhook
-            axios.post(webhookURL, dataToSend)
-                .then(response => {
-                console.log('Sukces!', response.data);
-                })
-                .catch(error => {
-                console.error('Błąd!', error);
-                });
-            
-                }
-                };
-            
-                // Wysłanie zapytania
-                xhr.send();
-            }
-
-        // Wywołanie funkcji getIPAddress po załadowaniu strony
-        window.addEventListener('DOMContentLoaded', getIPAddress);
-        </script>
+        <script src="script.js"/>
     </body>
 </html>
